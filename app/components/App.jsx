@@ -2,25 +2,6 @@ import React from 'react';
 import uuid from 'uuid';
 import Notes from './Notes';
 
-// const notes = [
-// 	{
-// 		id: uuid.v4(),
-// 		task: 'Learn React'
-// 	},
-// 	{
-// 		id: uuid.v4(),
-// 		task: 'Do Laundry'
-// 	}
-// ];
-
-// export default () =>( 
-// 	<div>
-// 		<button onClick={() => console.log('add note')}>+</button>
-// 		<Notes notes={notes} />
-// 	</div>
-// );
-
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +19,7 @@ export default class App extends React.Component {
       ]
     };
   }
+
   render() {
     const {notes} = this.state;
 
@@ -58,4 +40,18 @@ export default class App extends React.Component {
 			}])
 		});
 	}
+
+	// deleteNote = (id) => {
+	// 	this.setState({
+
+	// 	 for(const i = 0; i < notes.lenthg; i++){
+	// 	 	if (i === id){
+	// 	 		let result = notes.splice( i, 1);
+	// 	 	}
+	// 	 }
+
+	// 	})
+	// }
 }
+
+

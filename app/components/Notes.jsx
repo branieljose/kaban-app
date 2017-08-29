@@ -1,4 +1,5 @@
 import React from 'react';
+import Note from './Note';
 
 
 
@@ -6,6 +7,6 @@ import React from 'react';
 // console.log(notes);
 export default ({notes}) => (
 	<ul>{notes.map(note => 
-		<li key={notes.id}>{note.task}</li>
+		<li key={notes.id}><Note task={note.task} /></li>
 	)}</ul>
 )
