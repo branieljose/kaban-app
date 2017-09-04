@@ -5,7 +5,6 @@ import Notes from './Notes';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       notes: [
         {
@@ -16,42 +15,47 @@ export default class App extends React.Component {
           id: uuid.v4(),
           task: 'Do laundry'
         }
+      ],
+      count: [
+          {
+              counter: 0
+        }
       ]
     };
   }
 
   render() {
     const {notes} = this.state;
+    const {count} = this.state;
 
     return (
-      <div>
-        <button onClick={this.addNote}>+</button>
-        <Notes notes={notes} />
-      </div>
+        <div>
+          <div>
+            <button onClick={this.addNote}>+</button>
+            <Notes notes={notes} onDelete={this.deleteNote} />
+          </div>
+        </div>
     );
   }
 
+    addNote = () => {
+        this.setState({
+            notes: this.state.notes.concat([{
+                id: uuid.v4(),
+                task: 'New Task'
+            }])
+        });
+    }
 
-	addNote = () => {
+	deleteNote = (id, e) => {
+      //avoid bubbling to edit
+        e.stopPropagation();
+
 		this.setState({
-			notes: this.state.notes.concat([{
-				id: uuid.v4(),
-				task: 'New Task'
-			}])
+            notes: this.state.notes.filter(note => note.id !== id)
+
 		});
 	}
-
-	// deleteNote = (id) => {
-	// 	this.setState({
-
-	// 	 for(const i = 0; i < notes.lenthg; i++){
-	// 	 	if (i === id){
-	// 	 		let result = notes.splice( i, 1);
-	// 	 	}
-	// 	 }
-
-	// 	})
-	// }
 }
 
 
